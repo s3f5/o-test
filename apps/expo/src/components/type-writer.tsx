@@ -17,7 +17,7 @@ export type PropTypes = {
   delay?: number;
   textStyle?: string;
   cursorStyle?: string;
-  onChangeString?: (newString: string) => void;
+  onChangeString?: () => void;
   onTypeComplete?: () => void;
 };
 
@@ -29,7 +29,7 @@ export const TypeWriter = ({
   textStyle,
   cursorStyle,
   onChangeString,
-  onTypeComplete, // ADDED: Deconstructed onTypeComplete
+  onTypeComplete,
 }: PropTypes) => {
   const [stringIndex, setStringIndex] = useState(0);
   const [textIndex, setTextIndex] = useState(0);
@@ -57,7 +57,7 @@ export const TypeWriter = ({
       textArray[stringIndex] &&
       stringIndex !== prevStringIndex.current
     ) {
-      onChangeString(textArray[stringIndex]);
+      onChangeString();
       prevStringIndex.current = stringIndex;
     }
   }, [stringIndex, textArray, onChangeString]);
@@ -77,9 +77,8 @@ export const TypeWriter = ({
             setStringIndex((prevIndex) => prevIndex + 1);
           }, delay);
         } else {
-          // Check for onTypeComplete before looping or finishing
           if (onTypeComplete) {
-            onTypeComplete(); // Call the callback
+            onTypeComplete();
           }
 
           if (loop) {
