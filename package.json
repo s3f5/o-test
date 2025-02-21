@@ -1,0 +1,39 @@
+{
+  "name": "acme",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "clean": "git clean -xdf node_modules",
+    "clean:workspaces": "turbo run clean",
+    "dev": "turbo watch dev --continue",
+    "format": "turbo run format --continue -- --cache --cache-location .cache/.prettiercache",
+    "format:fix": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",
+    "postinstall": "pnpm lint:ws",
+    "lint": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
+    "lint:fix": "turbo run lint --continue -- --fix --cache --cache-location .cache/.eslintcache",
+    "lint:ws": "pnpm dlx sherif@latest",
+    "typecheck": "turbo run typecheck"
+  },
+  "prettier": "@acme/prettier-config",
+  "devDependencies": {
+    "@acme/prettier-config": "workspace:*",
+    "@turbo/gen": "^2.4.2",
+    "prettier": "catalog:",
+    "turbo": "^2.4.2",
+    "typescript": "catalog:"
+  },
+  "packageManager": "pnpm@9.14.2",
+  "engines": {
+    "node": ">=20.18.1",
+    "pnpm": "^9.14.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "cookie@<0.7.0": ">=0.7.0",
+      "cross-spawn@<6.0.6": ">=6.0.6",
+      "@eslint/plugin-kit@<0.2.3": ">=0.2.3",
+      "nanoid@<3.3.8": ">=3.3.8",
+      "undici@>=6.0.0 <6.21.1": ">=6.21.1"
+    }
+  }
+}

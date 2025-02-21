@@ -1,0 +1,23 @@
+{
+  "global": {
+    "continue": "Continue"
+  },
+  "login": {
+    "animations": {
+      "timePlanning": "Track Time",
+      "changeShift": "Swap Shifts",
+      "replacementSearch": "Find Replacement",
+      "rethinkWork": "Rethink Work"
+    },
+    "login": "Sign In",
+    "mailPlaceholder": "Email / Phone Number",
+    "mailErrorMsg": "Invalid Email Address",
+    "passwordPlaceholder": "Password",
+    "passwordErrorMsg": "Password must be at least 8 characters long.",
+    "forgotPW": "Forgot Password?",
+    "selectWorkspace": "Which workspace would you like to sign in to?",
+    "welcomeMsg": "Hey {{username}}",
+    "remember": "Remember selection",
+    "rememberInfo": "You can change this selection in the settings"
+  }
+}
