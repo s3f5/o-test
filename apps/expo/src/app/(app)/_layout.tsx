@@ -7,6 +7,7 @@ import { Stack } from "expo-router";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
 import { Text } from "~/components/ui/text";
+import { toOptions } from "~/lib/utils";
 
 export { ErrorBoundary } from "expo-router";
 
@@ -28,13 +29,13 @@ export default function RootLayout() {
           }}
         >
           <Stack.Screen
-            name="login"
+            name="index"
             options={{
               headerShown: false,
             }}
           />
           <Stack.Screen
-            name="index"
+            name="login"
             options={{
               headerShown: false,
             }}
@@ -49,16 +50,4 @@ export default function RootLayout() {
       </BottomSheetModalProvider>
     </GestureHandlerRootView>
   );
-}
-
-function toOptions(name: string) {
-  const title = name
-    .split("-")
-    .map(function (str: string) {
-      return str.replace(/\b\w/g, function (char) {
-        return char.toUpperCase();
-      });
-    })
-    .join(" ");
-  return title;
 }

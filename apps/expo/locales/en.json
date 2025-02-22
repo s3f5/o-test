@@ -11,7 +11,7 @@
     },
     "login": "Sign In",
     "mailPlaceholder": "Email / Phone Number",
-    "mailErrorMsg": "Invalid Email Address",
+    "mailErrorMsg": "Invalid Email Address / Phone Number",
     "passwordPlaceholder": "Password",
     "passwordErrorMsg": "Password must be at least 8 characters long.",
     "forgotPW": "Forgot Password?",

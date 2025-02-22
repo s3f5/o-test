@@ -1,3 +1,4 @@
+import type { VariantProps } from "class-variance-authority";
 import { forwardRef } from "react";
 import Animated, {
   interpolateColor,
@@ -6,17 +7,49 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import * as SwitchPrimitives from "@rn-primitives/switch";
+import { cva } from "class-variance-authority";
 import { useUnstableNativeVariable } from "nativewind";
 
 import { cn } from "~/lib/utils";
 
+const switchVariants = cva(
+  "flex-row items-center rounded-full border-2 border-transparent bg-transparent",
+  {
+    variants: {
+      size: {
+        default: "h-8 w-[64px]",
+        sm: "h-6 w-[48px]",
+      },
+    },
+    defaultVariants: {
+      size: "default",
+    },
+  },
+);
+
+const switchThumbVariants = cva(
+  "shadow-foreground/25 rounded-full bg-background shadow-md ring-0",
+  {
+    variants: {
+      size: {
+        default: "h-7 w-7",
+        sm: "h-5 w-5",
+      },
+    },
+    defaultVariants: {
+      size: "default",
+    },
+  },
+);
+
 const Switch = forwardRef<
   SwitchPrimitives.RootRef,
-  SwitchPrimitives.RootProps & {
-    width?: number;
-  }
->(({ className, width = 64, ...props }, ref) => {
-  const translateX = useDerivedValue(() => (props.checked ? width - 28 : 0));
+  SwitchPrimitives.RootProps & VariantProps<typeof switchVariants>
+>(({ className, size, ...props }, ref) => {
+  const variantWidth = size === "sm" ? 48 : 64;
+  const translateX = useDerivedValue(() =>
+    props.checked ? variantWidth - 20 : 0,
+  );
 
   const border = useUnstableNativeVariable("--grey-400") as string;
   const primary: string = useUnstableNativeVariable("--blue-600") as string;
@@ -42,23 +75,19 @@ const Switch = forwardRef<
     <Animated.View
       style={animatedRootStyle}
       className={cn(
-        `h-8 w-[64px] rounded-full`,
+        "rounded-full",
+        size === "sm" ? "h-6 w-[48px]" : `h-8 w-[64px]`,
         props.disabled && "opacity-50",
       )}
     >
       <SwitchPrimitives.Root
-        className={cn(
-          `h-8 w-[64px] shrink-0 flex-row items-center rounded-full border-2 border-transparent bg-transparent`,
-          className,
-        )}
+        className={cn(switchVariants({ size }), className)}
         {...props}
         ref={ref}
       >
         <Animated.View style={animatedThumbStyle}>
           <SwitchPrimitives.Thumb
-            className={
-              "shadow-foreground/25 h-7 w-7 rounded-full bg-background shadow-md ring-0"
-            }
+            className={cn(switchThumbVariants({ size }))}
           />
         </Animated.View>
       </SwitchPrimitives.Root>

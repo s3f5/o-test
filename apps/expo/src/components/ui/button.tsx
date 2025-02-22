@@ -8,7 +8,7 @@ import { TextClassContext } from "~/components/ui/text";
 import { cn } from "~/lib/utils";
 
 const buttonVariants = cva(
-  "group flex items-center justify-center rounded-md",
+  "group flex items-center justify-center rounded-xl",
   {
     variants: {
       variant: {

@@ -51,7 +51,7 @@ export default function Index() {
               t("login.animations.rethinkWork"),
             ]}
             loop={false}
-            onTypeComplete={() => router.replace("/(app)/login")}
+            onTypeComplete={() => router.replace("/login")}
             speed={100}
             delay={400}
             cursorStyle={`${
@@ -83,7 +83,9 @@ export default function Index() {
         <View className="flex">
           <Link href="/login" replace asChild>
             <Button className="rounded-xl bg-[--grey-extra]">
-              <Text className="text-primary-foreground">{t("login.login")}</Text>
+              <Text className="text-primary-foreground">
+                {t("login.login")}
+              </Text>
             </Button>
           </Link>
         </View>

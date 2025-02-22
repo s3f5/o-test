@@ -11,7 +11,7 @@
     },
     "login": "Anmelden",
     "mailPlaceholder": "E-Mail / Telefonnummer",
-    "mailErrorMsg": "Ungültige E-Mail-Adresse",
+    "mailErrorMsg": "Ungültige E-Mail-Adresse / Telefonnummer",
     "passwordPlaceholder": "Passwort",
     "passwordErrorMsg": "Das Passwort muss mindestens 8 Zeichen lang sein.",
     "forgotPW": "Passwort vergessen?",

@@ -10,7 +10,7 @@ import Animated, {
 
 import { cn } from "~/lib/utils";
 
-export type PropTypes = {
+type PropTypes = {
   textArray: string[];
   speed?: number;
   loop?: boolean;
@@ -35,6 +35,7 @@ export const TypeWriter = ({
   const [textIndex, setTextIndex] = useState(0);
 
   const opacity = useSharedValue(0);
+
   const prevStringIndex = useRef<number | null>(null);
 
   const animatedCursorStyle = useAnimatedStyle(() => {
@@ -49,7 +50,7 @@ export const TypeWriter = ({
       -1,
       true,
     );
-  }, []);
+  }, [opacity]);
 
   useEffect(() => {
     if (
